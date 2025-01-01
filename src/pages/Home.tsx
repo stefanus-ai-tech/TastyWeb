@@ -1,7 +1,31 @@
 import { Link } from "react-router-dom";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
 
 const Home = () => {
+  const testimonials = [
+    {
+      text: "Makanannya enak banget, pas dimulut",
+      rating: 5,
+      author: "John Doe"
+    },
+    {
+      text: "Pelayanan cepat dan ramah",
+      rating: 4.5,
+      author: "Jane Smith"
+    },
+    {
+      text: "Menu favorit saya setiap hari",
+      rating: 5,
+      author: "Mike Johnson"
+    }
+  ];
+
   return (
     <div className="animate-fade-in">
       {/* Hero Section */}
@@ -60,18 +84,34 @@ const Home = () => {
           <h2 className="text-3xl font-bold text-center mb-12">
             Pesan Dari Kostumer Kami
           </h2>
-          <div className="max-w-2xl mx-auto text-center">
-            <p className="text-xl italic mb-4">
-              "Makanannya enak banget, pas dimulut"
-            </p>
-            <div className="flex justify-center items-center space-x-2">
-              {"★★★★★".split("").map((star, i) => (
-                <span key={i} className="text-yellow-400">
-                  {star}
-                </span>
-              ))}
-            </div>
-            <p className="mt-2 text-gray-600">4.8</p>
+          <div className="max-w-4xl mx-auto">
+            <Carousel
+              opts={{
+                align: "start",
+                loop: true,
+              }}
+              className="w-full"
+            >
+              <CarouselContent>
+                {testimonials.map((testimonial, index) => (
+                  <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
+                    <div className="bg-background p-6 rounded-lg text-center mx-2">
+                      <p className="text-xl italic mb-4">{testimonial.text}</p>
+                      <div className="flex justify-center items-center space-x-2 mb-2">
+                        {"★".repeat(Math.floor(testimonial.rating)).split("").map((star, i) => (
+                          <span key={i} className="text-yellow-400">
+                            {star}
+                          </span>
+                        ))}
+                      </div>
+                      <p className="mt-2 text-gray-600">{testimonial.author}</p>
+                    </div>
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+              <CarouselPrevious />
+              <CarouselNext />
+            </Carousel>
           </div>
         </div>
       </section>

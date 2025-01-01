@@ -6,6 +6,11 @@ import Home from "./pages/Home";
 import Menu from "./pages/Menu";
 import Cart from "./pages/Cart";
 import Checkout from "./pages/Checkout";
+import About from "./pages/About";
+import Blog from "./pages/Blog";
+import Contact from "./pages/Contact";
+import Profile from "./pages/Profile";
+import FAQ from "./pages/FAQ";
 
 const queryClient = new QueryClient();
 
@@ -21,6 +26,11 @@ const App = () => {
               <Route path="/menu" element={<Menu />} />
               <Route path="/cart" element={<Cart />} />
               <Route path="/checkout" element={<Checkout />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/blog" element={<Blog />} />
+              <Route path="/contact" element={<Contact />} />
+              <Route path="/profile" element={<Profile />} />
+              <Route path="/faq" element={<FAQ />} />
             </Routes>
           </main>
           <Footer />
